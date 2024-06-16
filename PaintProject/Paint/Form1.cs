@@ -257,7 +257,7 @@ namespace Paint
             else
             {
                 // Enable drawing shapes
-                currentShapeType = ShapeType.Line; // Or whichever default shape you want
+                currentShapeType = ShapeType.Line;
                 panelDrawing.Cursor = Cursors.Cross;
             }
         }
