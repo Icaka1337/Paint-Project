@@ -38,6 +38,7 @@
             lineToolStripMenuItem = new ToolStripMenuItem();
             rectangleToolStripMenuItem = new ToolStripMenuItem();
             ellipseToolStripMenuItem = new ToolStripMenuItem();
+            customShapeToolStripMenuItem = new ToolStripMenuItem();
             colorToolStripMenuItem = new ToolStripMenuItem();
             thicknessToolStripMenuItem = new ToolStripMenuItem();
             remodelShapeToolStripMenuItem = new ToolStripMenuItem();
@@ -97,7 +98,7 @@
             // 
             // shapesToolStripMenuItem
             // 
-            shapesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { lineToolStripMenuItem, rectangleToolStripMenuItem, ellipseToolStripMenuItem });
+            shapesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { lineToolStripMenuItem, rectangleToolStripMenuItem, ellipseToolStripMenuItem, customShapeToolStripMenuItem });
             shapesToolStripMenuItem.Name = "shapesToolStripMenuItem";
             shapesToolStripMenuItem.Size = new Size(70, 24);
             shapesToolStripMenuItem.Text = "Shapes";
@@ -105,23 +106,30 @@
             // lineToolStripMenuItem
             // 
             lineToolStripMenuItem.Name = "lineToolStripMenuItem";
-            lineToolStripMenuItem.Size = new Size(158, 26);
+            lineToolStripMenuItem.Size = new Size(187, 26);
             lineToolStripMenuItem.Text = "Line";
             lineToolStripMenuItem.Click += lineToolStripMenuItem_Click;
             // 
             // rectangleToolStripMenuItem
             // 
             rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
-            rectangleToolStripMenuItem.Size = new Size(158, 26);
+            rectangleToolStripMenuItem.Size = new Size(187, 26);
             rectangleToolStripMenuItem.Text = "Rectangle";
             rectangleToolStripMenuItem.Click += rectangleToolStripMenuItem_Click;
             // 
             // ellipseToolStripMenuItem
             // 
             ellipseToolStripMenuItem.Name = "ellipseToolStripMenuItem";
-            ellipseToolStripMenuItem.Size = new Size(158, 26);
+            ellipseToolStripMenuItem.Size = new Size(187, 26);
             ellipseToolStripMenuItem.Text = "Ellipse";
             ellipseToolStripMenuItem.Click += ellipseToolStripMenuItem_Click;
+            // 
+            // customShapeToolStripMenuItem
+            // 
+            customShapeToolStripMenuItem.Name = "customShapeToolStripMenuItem";
+            customShapeToolStripMenuItem.Size = new Size(187, 26);
+            customShapeToolStripMenuItem.Text = "Custom Shape";
+            customShapeToolStripMenuItem.Click += customShapeToolStripMenuItem_Click;
             // 
             // colorToolStripMenuItem
             // 
@@ -156,6 +164,7 @@
             resizeShapeToolStripMenuItem.Name = "resizeShapeToolStripMenuItem";
             resizeShapeToolStripMenuItem.Size = new Size(224, 26);
             resizeShapeToolStripMenuItem.Text = "Resize Shape";
+            resizeShapeToolStripMenuItem.Click += resizeShapeToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -190,6 +199,7 @@
             MainMenuStrip = menuStrip1;
             Name = "Form1";
             Text = "Paint Application";
+            WindowState = FormWindowState.Maximized;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -216,5 +226,6 @@
         private ToolStripMenuItem moveToolStripMenuItem;
         private ToolStripMenuItem resizeShapeToolStripMenuItem;
         private ToolStrip toolStrip1;
+        private ToolStripMenuItem customShapeToolStripMenuItem;
     }
 }
