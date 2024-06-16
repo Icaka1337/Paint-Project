@@ -40,12 +40,11 @@
             ellipseToolStripMenuItem = new ToolStripMenuItem();
             colorToolStripMenuItem = new ToolStripMenuItem();
             thicknessToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            resizeOrMoveShape = new ToolStripMenuItem();
-            panelDrawing = new Panel();
-            resireOrMoveToolStripMenuItem = new ToolStripMenuItem();
+            remodelShapeToolStripMenuItem = new ToolStripMenuItem();
             moveToolStripMenuItem = new ToolStripMenuItem();
             resizeShapeToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            panelDrawing = new Panel();
             toolStrip1 = new ToolStrip();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -53,14 +52,13 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, shapesToolStripMenuItem, colorToolStripMenuItem, thicknessToolStripMenuItem, resireOrMoveToolStripMenuItem, toolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, shapesToolStripMenuItem, colorToolStripMenuItem, thicknessToolStripMenuItem, remodelShapeToolStripMenuItem, toolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
             menuStrip1.Size = new Size(711, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // fileToolStripMenuItem
             // 
@@ -139,32 +137,12 @@
             thicknessToolStripMenuItem.Text = "Thickness";
             thicknessToolStripMenuItem.Click += thicknessToolStripMenuItem_Click;
             // 
-            // toolStripMenuItem1
+            // remodelShapeToolStripMenuItem
             // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(14, 24);
-            // 
-            // resizeOrMoveShape
-            // 
-            resizeOrMoveShape.Name = "resizeOrMoveShape";
-            resizeOrMoveShape.Size = new Size(85, 24);
-            resizeOrMoveShape.Text = "Resire or Move";
-            resizeOrMoveShape.Click += resizeOrMoveShapeButton;
-            // 
-            // panelDrawing
-            // 
-            panelDrawing.Dock = DockStyle.Fill;
-            panelDrawing.Location = new Point(0, 28);
-            panelDrawing.Name = "panelDrawing";
-            panelDrawing.Size = new Size(711, 422);
-            panelDrawing.TabIndex = 1;
-            // 
-            // resireOrMoveToolStripMenuItem
-            // 
-            resireOrMoveToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { moveToolStripMenuItem, resizeShapeToolStripMenuItem });
-            resireOrMoveToolStripMenuItem.Name = "resireOrMoveToolStripMenuItem";
-            resireOrMoveToolStripMenuItem.Size = new Size(128, 24);
-            resireOrMoveToolStripMenuItem.Text = "Remodel Shape";
+            remodelShapeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { moveToolStripMenuItem, resizeShapeToolStripMenuItem });
+            remodelShapeToolStripMenuItem.Name = "remodelShapeToolStripMenuItem";
+            remodelShapeToolStripMenuItem.Size = new Size(128, 24);
+            remodelShapeToolStripMenuItem.Text = "Remodel Shape";
             // 
             // moveToolStripMenuItem
             // 
@@ -178,6 +156,19 @@
             resizeShapeToolStripMenuItem.Name = "resizeShapeToolStripMenuItem";
             resizeShapeToolStripMenuItem.Size = new Size(224, 26);
             resizeShapeToolStripMenuItem.Text = "Resize Shape";
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(14, 24);
+            // 
+            // panelDrawing
+            // 
+            panelDrawing.Dock = DockStyle.Fill;
+            panelDrawing.Location = new Point(0, 28);
+            panelDrawing.Name = "panelDrawing";
+            panelDrawing.Size = new Size(711, 422);
+            panelDrawing.TabIndex = 1;
             // 
             // toolStrip1
             // 
@@ -198,7 +189,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Vector Graphics Editor";
+            Text = "Paint Application";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -219,10 +210,9 @@
         private ToolStripMenuItem ellipseToolStripMenuItem;
         private ToolStripMenuItem colorToolStripMenuItem;
         private ToolStripMenuItem thicknessToolStripMenuItem;
-        private ToolStripMenuItem resizeOrMoveShape;
         private Panel panelDrawing;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem resireOrMoveToolStripMenuItem;
+        private ToolStripMenuItem remodelShapeToolStripMenuItem;
         private ToolStripMenuItem moveToolStripMenuItem;
         private ToolStripMenuItem resizeShapeToolStripMenuItem;
         private ToolStrip toolStrip1;

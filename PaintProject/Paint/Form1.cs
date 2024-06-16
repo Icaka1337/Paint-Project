@@ -13,9 +13,9 @@ namespace Paint
         private List<Shape> shapes = new List<Shape>();
         private ShapeType currentShapeType = ShapeType.Line;
         private Color currentColor = Color.Black;
-        private int currentThickness = 1;
+        private int currentThickness = 10;
         private Shape currentShape = null;
-        private Shape lastSavedShape;
+        private Shape lastSavedShape = null;
         private Shape selectedShape = null;
         private Point offset;
         private Point mouseOffset;
@@ -75,7 +75,6 @@ namespace Paint
                     panelDrawing.Invalidate();
                 }
 
-                // Add your existing code for drawing shapes here
             }
 
             else
@@ -156,24 +155,6 @@ namespace Paint
             panelDrawing.Invalidate();
         }
 
-
-        private void resizeOrMoveShapeButton(object sender, EventArgs e)
-        {
-            isMovingShape = !isMovingShape; // Toggle the move
-            if (isMovingShape)
-            {
-                // Disable drawing shapes
-                currentShapeType = ShapeType.None;
-                panelDrawing.Cursor = Cursors.SizeAll;
-            }
-            else
-            {
-                // Enable drawing shapes
-                currentShapeType = ShapeType.Line; // Or whichever default shape you want
-                panelDrawing.Cursor = Cursors.Cross;
-            }
-        }
-
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -205,16 +186,19 @@ namespace Paint
 
         private void lineToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isMovingShape = false;
             currentShapeType = ShapeType.Line;
         }
 
         private void rectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isMovingShape = false;
             currentShapeType = ShapeType.Rectangle;
         }
 
         private void ellipseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            isMovingShape = false;
             currentShapeType = ShapeType.Ellipse;
         }
 
@@ -259,11 +243,6 @@ namespace Paint
                 }
             }
             panelDrawing.Invalidate();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
         }
 
         private void moveToolStripMenuItem_Click(object sender, EventArgs e)

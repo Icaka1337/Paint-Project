@@ -3,9 +3,9 @@
     partial class ThicknessForm
     {
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.NumericUpDown numericUpDownThickness;
-        private System.Windows.Forms.Button buttonOK;
-        private System.Windows.Forms.Button buttonCancel;
+        private NumericUpDown numericUpDownThickness;
+        private Button buttonOK;
+        private Button buttonCancel;
 
         protected override void Dispose(bool disposing)
         {
@@ -18,53 +18,49 @@
 
         private void InitializeComponent()
         {
-            this.numericUpDownThickness = new System.Windows.Forms.NumericUpDown();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThickness)).BeginInit();
-            this.SuspendLayout();
-
+            numericUpDownThickness = new NumericUpDown();
+            buttonOK = new Button();
+            buttonCancel = new Button();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownThickness).BeginInit();
+            SuspendLayout();
             // 
             // numericUpDownThickness
             // 
-            this.numericUpDownThickness.Location = new System.Drawing.Point(12, 12);
-            this.numericUpDownThickness.Name = "numericUpDownThickness";
-            this.numericUpDownThickness.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownThickness.TabIndex = 0;
-
+            numericUpDownThickness.Location = new Point(42, 13);
+            numericUpDownThickness.Name = "numericUpDownThickness";
+            numericUpDownThickness.Size = new Size(106, 27);
+            numericUpDownThickness.TabIndex = 0;
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(12, 40);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 1;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-
+            buttonOK.Location = new Point(12, 54);
+            buttonOK.Name = "buttonOK";
+            buttonOK.Size = new Size(75, 35);
+            buttonOK.TabIndex = 1;
+            buttonOK.Text = "OK";
+            buttonOK.UseVisualStyleBackColor = true;
+            buttonOK.Click += buttonOK_Click;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(93, 40);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 2;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-
+            buttonCancel.Location = new Point(98, 54);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(83, 35);
+            buttonCancel.TabIndex = 2;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.Click += buttonCancel_Click;
             // 
             // ThicknessForm
             // 
-            this.ClientSize = new System.Drawing.Size(184, 75);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.numericUpDownThickness);
-            this.Name = "ThicknessForm";
-            this.Text = "Thickness";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownThickness)).EndInit();
-            this.ResumeLayout(false);
+            ClientSize = new Size(193, 98);
+            Controls.Add(buttonCancel);
+            Controls.Add(buttonOK);
+            Controls.Add(numericUpDownThickness);
+            Name = "ThicknessForm";
+            Text = "Thickness";
+            ((System.ComponentModel.ISupportInitialize)numericUpDownThickness).EndInit();
+            ResumeLayout(false);
         }
     }
 }

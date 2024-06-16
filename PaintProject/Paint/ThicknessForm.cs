@@ -18,5 +18,10 @@ namespace Paint
             Thickness = (int)numericUpDownThickness.Value;
             DialogResult = DialogResult.OK;
         }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
     }
 }
