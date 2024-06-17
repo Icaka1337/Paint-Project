@@ -12,13 +12,15 @@ namespace Paint
         public Point EndPoint { get; set; }
         public Color Color { get; set; }
         public int Thickness { get; set; }
+        public int Opacity { get; set; }
 
-        protected Shape(Point startPoint, Point endPoint, Color color, int thickness)
+        protected Shape(Point startPoint, Point endPoint, Color color, int thickness, int opacity)
         {
             StartPoint = startPoint;
             EndPoint = endPoint;
             Color = color;
             Thickness = thickness;
+            Opacity = opacity;
         }
 
         public abstract void Draw(Graphics g);
@@ -35,15 +37,16 @@ namespace Paint
             Point endPoint = new Point(int.Parse(parts[3]), int.Parse(parts[4]));
             Color color = Color.FromArgb(int.Parse(parts[5]));
             int thickness = int.Parse(parts[6]);
+            int opacity = int.Parse(parts[7]);
 
             switch (shapeType)
             {
                 case ShapeType.Line:
-                    return new Line(startPoint, endPoint, color, thickness);
+                    return new Line(startPoint, endPoint, color, thickness,opacity);
                 case ShapeType.Rectangle:
-                    return new RectangleShape(startPoint, endPoint, color, thickness);
+                    return new RectangleShape(startPoint, endPoint, color, thickness,opacity);
                 case ShapeType.Ellipse:
-                    return new EllipseShape(startPoint, endPoint, color, thickness);
+                    return new EllipseShape(startPoint, endPoint, color, thickness, opacity);
                 default:
                     throw new ArgumentException("Unknown shape type.");
             }

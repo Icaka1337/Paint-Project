@@ -44,7 +44,7 @@
             remodelShapeToolStripMenuItem = new ToolStripMenuItem();
             moveToolStripMenuItem = new ToolStripMenuItem();
             resizeShapeToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
+            opacityToolStripMenuItem = new ToolStripMenuItem();
             panelDrawing = new Panel();
             toolStrip1 = new ToolStrip();
             menuStrip1.SuspendLayout();
@@ -53,7 +53,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(24, 24);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, shapesToolStripMenuItem, colorToolStripMenuItem, thicknessToolStripMenuItem, remodelShapeToolStripMenuItem, toolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, shapesToolStripMenuItem, colorToolStripMenuItem, thicknessToolStripMenuItem, remodelShapeToolStripMenuItem, opacityToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 2, 0, 2);
@@ -155,21 +155,23 @@
             // moveToolStripMenuItem
             // 
             moveToolStripMenuItem.Name = "moveToolStripMenuItem";
-            moveToolStripMenuItem.Size = new Size(224, 26);
+            moveToolStripMenuItem.Size = new Size(179, 26);
             moveToolStripMenuItem.Text = "Move";
             moveToolStripMenuItem.Click += moveToolStripMenuItem_Click;
             // 
             // resizeShapeToolStripMenuItem
             // 
             resizeShapeToolStripMenuItem.Name = "resizeShapeToolStripMenuItem";
-            resizeShapeToolStripMenuItem.Size = new Size(224, 26);
+            resizeShapeToolStripMenuItem.Size = new Size(179, 26);
             resizeShapeToolStripMenuItem.Text = "Resize Shape";
             resizeShapeToolStripMenuItem.Click += resizeShapeToolStripMenuItem_Click;
             // 
-            // toolStripMenuItem1
+            // opacityToolStripMenuItem
             // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(14, 24);
+            opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
+            opacityToolStripMenuItem.Size = new Size(74, 24);
+            opacityToolStripMenuItem.Text = "Opacity";
+            opacityToolStripMenuItem.Click += opacityToolStripMenuItem_Click;
             // 
             // panelDrawing
             // 
@@ -221,7 +223,7 @@
         private ToolStripMenuItem colorToolStripMenuItem;
         private ToolStripMenuItem thicknessToolStripMenuItem;
         private Panel panelDrawing;
-        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem opacityToolStripMenuItem;
         private ToolStripMenuItem remodelShapeToolStripMenuItem;
         private ToolStripMenuItem moveToolStripMenuItem;
         private ToolStripMenuItem resizeShapeToolStripMenuItem;

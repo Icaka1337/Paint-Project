@@ -8,14 +8,14 @@ namespace Paint
 {
     public class Line : Shape
     {
-        public Line(Point startPoint, Point endPoint, Color color, int thickness)
-            : base(startPoint, endPoint, color, thickness)
+        public Line(Point startPoint, Point endPoint, Color color, int thickness, int opacity)
+            : base(startPoint, endPoint, color, thickness, opacity)
         {
         }
 
         public override void Draw(Graphics g)
         {
-            using (Pen pen = new Pen(Color, Thickness))
+            using (Pen pen = new Pen(Color.FromArgb(Opacity, Color), Thickness))
             {
                 g.DrawLine(pen, StartPoint, EndPoint);
             }
@@ -23,7 +23,7 @@ namespace Paint
 
         public override string Serialize()
         {
-            return $"Line,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness}";
+            return $"Line,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness},{Opacity}";
         }
 
         public override bool IsPointInside(Point p)

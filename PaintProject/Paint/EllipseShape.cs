@@ -8,14 +8,14 @@ namespace Paint
 {
     public class EllipseShape : Shape
     {
-        public EllipseShape(Point startPoint, Point endPoint, Color color, int thickness)
-            : base(startPoint, endPoint, color, thickness)
+        public EllipseShape(Point startPoint, Point endPoint, Color color, int thickness, int opacity)
+            : base(startPoint, endPoint, color, thickness, opacity)
         {
         }
 
         public override void Draw(Graphics g)
         {
-            using (Pen pen = new Pen(Color, Thickness))
+            using (Pen pen = new Pen(Color.FromArgb(Opacity, Color), Thickness))
             {
                 g.DrawEllipse(pen, GetRectangle());
             }
@@ -23,7 +23,7 @@ namespace Paint
 
         public override string Serialize()
         {
-            return $"Ellipse,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness}";
+            return $"Ellipse,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness},{Opacity}";
         }
 
         private Rectangle GetRectangle()

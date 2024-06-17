@@ -16,6 +16,7 @@ namespace Paint
         private ShapeType currentShapeType = ShapeType.Line;
         private Color currentColor = Color.Black;
         private int currentThickness = 10;
+        private int currentOpacity = 255;
         private Shape currentShape = null;
         private Shape lastSavedShape = null;
         private Shape selectedShape = null;
@@ -60,17 +61,17 @@ namespace Paint
                 switch (currentShapeType)
                 {
                     case ShapeType.Line:
-                        shape = new Line(e.Location, e.Location, currentColor, currentThickness);
+                        shape = new Line(e.Location, e.Location, currentColor, currentThickness, currentOpacity);
                         shapesCount.Add(1);
                         points.Add(e.Location);
                         break;
                     case ShapeType.Rectangle:
-                        shape = new RectangleShape(e.Location, e.Location, currentColor, currentThickness);
+                        shape = new RectangleShape(e.Location, e.Location, currentColor, currentThickness, currentOpacity);
                         shapesCount.Add(2);
                         points.Add(e.Location);
                         break;
                     case ShapeType.Ellipse:
-                        shape = new EllipseShape(e.Location, e.Location, currentColor, currentThickness);
+                        shape = new EllipseShape(e.Location, e.Location, currentColor, currentThickness, currentOpacity);
                         shapesCount.Add(3);
                         points.Add(e.Location);
                         break;
@@ -318,6 +319,15 @@ namespace Paint
         private void resizeShapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             isResizeShape = !isResizeShape; // Toggle resize
+        }
+
+        private void opacityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Opacity opacityForm = new Opacity(currentOpacity);
+            if (opacityForm.ShowDialog() == DialogResult.OK)
+            {
+                currentOpacity = opacityForm.newOpacity;
+            }
         }
     }
 }

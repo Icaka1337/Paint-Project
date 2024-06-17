@@ -11,6 +11,7 @@ namespace Paint
         private ShapeType currentShapeType = ShapeType.Line;
         private Color currentColor = Color.Black;
         private int currentThickness = 10;
+        private int currentOpacity = 255;
         private Shape currentShape = null;
 
         public List<Shape> Shapes { get { return shapes; } }
@@ -27,13 +28,13 @@ namespace Paint
             switch (currentShapeType)
             {
                 case ShapeType.Line:
-                    shape = new Line(e.Location, e.Location, currentColor, currentThickness);
+                    shape = new Line(e.Location, e.Location, currentColor, currentThickness, currentOpacity);
                     break;
                 case ShapeType.Rectangle:
-                    shape = new RectangleShape(e.Location, e.Location, currentColor, currentThickness);
+                    shape = new RectangleShape(e.Location, e.Location, currentColor, currentThickness, currentOpacity);
                     break;
                 case ShapeType.Ellipse:
-                    shape = new EllipseShape(e.Location, e.Location, currentColor, currentThickness);
+                    shape = new EllipseShape(e.Location, e.Location, currentColor, currentThickness, currentOpacity);
                     break;
             }
 
