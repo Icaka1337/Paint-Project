@@ -11,6 +11,8 @@ namespace Paint
     public partial class Form1 : Form
     {
         private List<Shape> shapes = new List<Shape>();
+        private List<int> shapesCount = new List<int>();
+        private List<Point> points = new List<Point>();
         private ShapeType currentShapeType = ShapeType.Line;
         private Color currentColor = Color.Black;
         private int currentThickness = 10;
@@ -59,12 +61,18 @@ namespace Paint
                 {
                     case ShapeType.Line:
                         shape = new Line(e.Location, e.Location, currentColor, currentThickness);
+                        shapesCount.Add(1);
+                        points.Add(e.Location);
                         break;
                     case ShapeType.Rectangle:
                         shape = new RectangleShape(e.Location, e.Location, currentColor, currentThickness);
+                        shapesCount.Add(2);
+                        points.Add(e.Location);
                         break;
                     case ShapeType.Ellipse:
                         shape = new EllipseShape(e.Location, e.Location, currentColor, currentThickness);
+                        shapesCount.Add(3);
+                        points.Add(e.Location);
                         break;
                     case ShapeType.Custom:
                         // Open the custom shape form
@@ -276,8 +284,21 @@ namespace Paint
             }
             panelDrawing.Invalidate();
         }
-
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.M))
+            {
+                ToggleMoveMode();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void moveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleMoveMode();
+        }
+
+        private void ToggleMoveMode()
         {
             isMovingShape = !isMovingShape; // Toggle the move
             if (isMovingShape)
@@ -301,8 +322,6 @@ namespace Paint
     }
 }
 
-
-
 public enum ShapeType
 {
     Line,
@@ -310,147 +329,4 @@ public enum ShapeType
     Ellipse,
     Custom,
     None
-}
-
-public class Line : Shape
-{
-    public Line(Point startPoint, Point endPoint, Color color, int thickness)
-        : base(startPoint, endPoint, color, thickness)
-    {
-    }
-
-    public override void Draw(Graphics g)
-    {
-        using (Pen pen = new Pen(Color, Thickness))
-        {
-            g.DrawLine(pen, StartPoint, EndPoint);
-        }
-    }
-
-    public override string Serialize()
-    {
-        return $"Line,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness}";
-    }
-
-    public override bool IsPointInside(Point p)
-    {
-        // Simple check for line vicinity (bounding box)
-        int minX = Math.Min(StartPoint.X, EndPoint.X) - Thickness;
-        int maxX = Math.Max(StartPoint.X, EndPoint.X) + Thickness;
-        int minY = Math.Min(StartPoint.Y, EndPoint.Y) - Thickness;
-        int maxY = Math.Max(StartPoint.Y, EndPoint.Y) + Thickness;
-
-        return p.X >= minX && p.X <= maxX && p.Y >= minY && p.Y <= maxY;
-    }
-}
-
-public class RectangleShape : Shape
-{
-    public RectangleShape(Point startPoint, Point endPoint, Color color, int thickness)
-        : base(startPoint, endPoint, color, thickness)
-    {
-    }
-
-    public override void Draw(Graphics g)
-    {
-        using (Pen pen = new Pen(Color, Thickness))
-        {
-            g.DrawRectangle(pen, GetRectangle());
-        }
-    }
-
-    public override string Serialize()
-    {
-        return $"Rectangle,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness}";
-    }
-
-    private Rectangle GetRectangle()
-    {
-        return new Rectangle(
-            Math.Min(StartPoint.X, EndPoint.X),
-            Math.Min(StartPoint.Y, EndPoint.Y),
-            Math.Abs(EndPoint.X - StartPoint.X),
-            Math.Abs(EndPoint.Y - StartPoint.Y));
-    }
-
-    public override bool IsPointInside(Point p)
-    {
-        Rectangle rect = GetRectangle();
-        return rect.Contains(p);
-    }
-}
-
-public class EllipseShape : Shape
-{
-    public EllipseShape(Point startPoint, Point endPoint, Color color, int thickness)
-        : base(startPoint, endPoint, color, thickness)
-    {
-    }
-
-    public override void Draw(Graphics g)
-    {
-        using (Pen pen = new Pen(Color, Thickness))
-        {
-            g.DrawEllipse(pen, GetRectangle());
-        }
-    }
-
-    public override string Serialize()
-    {
-        return $"Ellipse,{StartPoint.X},{StartPoint.Y},{EndPoint.X},{EndPoint.Y},{Color.ToArgb()},{Thickness}";
-    }
-
-    private Rectangle GetRectangle()
-    {
-        return new Rectangle(
-            Math.Min(StartPoint.X, EndPoint.X),
-            Math.Min(StartPoint.Y, EndPoint.Y),
-            Math.Abs(EndPoint.X - StartPoint.X),
-            Math.Abs(EndPoint.Y - StartPoint.Y));
-    }
-
-    public override bool IsPointInside(Point p)
-    {
-        Rectangle rect = GetRectangle();
-        float dx = (p.X - rect.Left) / (float)rect.Width;
-        float dy = (p.Y - rect.Top) / (float)rect.Height;
-        return (dx * dx + dy * dy) <= 1;
-    }
-}
-public class CustomShape : Shape
-{
-    private List<Point> points;
-
-    public CustomShape(List<Point> points, Color color, int thickness)
-        : base(points.First(), points.Last(), color, thickness)
-    {
-        this.points = points;
-    }
-
-    public void SetPoints(List<Point> newPoints)
-    {
-        points = newPoints;
-    }
-
-    public override void Draw(Graphics g)
-    {
-        if (points.Count > 1)
-        {
-            using (Pen pen = new Pen(Color, Thickness))
-            {
-                g.DrawLines(pen, points.ToArray());
-            }
-        }
-    }
-
-    public override bool IsPointInside(Point p)
-    {
-        // Implement point-in-shape logic if needed
-        return false;
-    }
-
-    public override string Serialize()
-    {
-        return $"CustomShape,{string.Join(";", points.Select(pt => $"{pt.X},{pt.Y}"))},{Color.ToArgb()},{Thickness}";
-    }
 }
